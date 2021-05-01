@@ -1,5 +1,5 @@
 esta es mi historia: 
-
+ . 
 Mi nombre es Ali Serrano 
 
 Tengo 22 años de edad y vivo en guarenas
@@ -7,4 +7,5 @@ Tengo 22 años de edad y vivo en guarenas
 
 quiero ser AI Ingineer
 
-hola soy bata
+h ola soy bata
+-     prueba loca
