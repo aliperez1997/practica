@@ -1,7 +1,11 @@
+from django.forms.widgets import EmailInput
+from e_commerce.forms import RegisterForm
 from django.contrib.auth import authenticate
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from .forms import RegisterForm
+from django.contrib.auth.models import User
 
 def index(request):
     return render(request, 'index.html', {
@@ -33,11 +37,21 @@ def login_view(request):
 
     })
 
-
 def logout_view(request):
     logout(request)
     messages.success(request, 'Sesión cerrada exitosamente')
     return redirect('login')
     
+def register(request):
+    form=RegisterForm(request.POST or None)
 
-    
+    if request.method=='POST' and form.is_valid():
+        user= form.save()
+        if user:
+            login(request, user)
+            messages.success(request, 'Usuario creado con exito')
+            return redirect('index')
+
+    return render(request, 'users/register.html', {
+        'form' : form
+    })
