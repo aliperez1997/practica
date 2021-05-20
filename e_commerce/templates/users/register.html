@@ -1,48 +1,37 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-</head>
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <h2>Registro</h2>
-                {# Formulario #}
-                <form method="post">
-                    {% csrf_token %} 
-                
-                    <!-- <div class="form-group">
-                        {{form.username.label_tag}}
-                        {{form.username}}
-                        {{form.email.label_tag}}
-                        {{form.email}}
-                        {{form.password.label_tag}}
-                        {{form.password}}
-                    </div> -->
-                    
-                    {% for i in form %}
-                    <div>
-                        {{i.label_tag}}
-                        {{i}}
+{% extends 'base.html' %}
 
-                        {% if i.errors %}
-                            {{i.errors}}
-                        {% endif %}
-                    </div>
-                    {% endfor %}
-                    <button type="submit" class="btn btn-primary mt-3">Registrar</button>
-                </form>
-            </div>
+{% block content %}
+    
+    <div class="row">
+        <div class="col">
+            <h2>Registro</h2>
+            {# Formulario #}
+            <form method="post">
+                {% csrf_token %} 
+            
+                <!-- <div class="form-group">
+                    {{form.username.label_tag}}
+                    {{form.username}}
+                    {{form.email.label_tag}}
+                    {{form.email}}
+                    {{form.password.label_tag}}
+                    {{form.password}}
+                </div> -->
+                
+                {% for i in form %}
+                <div>
+                    {{i.label_tag}}
+                    {{i}}
+
+                    {% if i.errors %}
+                        {{i.errors}}
+                    {% endif %}
+                </div>
+                {% endfor %}
+                <button type="submit" class="btn btn-primary mt-3">Registrar</button>
+            </form>
         </div>
     </div>
-</body>
-    <script src="{% static 'js/jquery-3.6.0.min.js'%}"></script>
-    <script src="{% static 'js/bootstrap.min.js'%}"> </script>
-    <script src="{% static 'js/main.js'%}"> </script>
-</html>
+
+{% endblock %}
+
